@@ -1,0 +1,132 @@
+<script>
+    import gsap from "gsap"
+    let currentScroll = 0;
+let isScrollingDown = true;
+
+let tween = gsap.to(".marquee__part", {xPercent: -100, repeat: -1, duration: 80, ease: "linear"}).totalProgress(0.5);
+
+gsap.set(".marquee__inner", {xPercent: -50});
+
+window.addEventListener("scroll", function(){
+  
+  if ( window.pageYOffset > currentScroll ) {
+    isScrollingDown = true;
+  } else {
+    isScrollingDown = false;
+  }
+   
+  gsap.to(tween, {
+    timeScale: isScrollingDown ? 1 : -1
+  });
+  
+  currentScroll = window.pageYOffset
+});
+
+
+
+</script>
+
+
+<section class="marquee ">
+    <div class="marquee__inner" aria-hidden="true" ref="inner">
+      <div class="marquee__part">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction <span class="_mark">Site web en construction</span> 
+      </div>
+      
+      <div class="marquee__part ">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction         <img src="/samplerlogo.jpeg" width="90px" alt="">
+        <span class="_mark"> Site web en construction</span> 
+      </div>
+      <div class="marquee__part">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction         <img src="/samplerlogo.jpeg" width="90px" alt="">
+        <span class="_mark">Site web en construction</span> 
+      </div>
+      <div class="marquee__part ">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction         <img src="/samplerlogo.jpeg" width="90px" alt="">
+        <span class="_mark">Site web en construction</span> 
+      </div>
+      <div class="marquee__part">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction         <img src="/samplerlogo.jpeg" width="90px" alt="">
+        <span class="_mark">Site web en construction</span>
+         
+      </div>
+      <div class="marquee__part ">
+        <img src="/samplerlogo.jpeg" width="90px" alt="">
+
+        Site web en construction         <img src="/samplerlogo.jpeg" width="90px" alt="">
+        <span class="_mark">Site web en construction</span> 
+      </div>
+    </div>
+</section>
+
+<section class="spacer"></section>
+
+
+<style>
+    
+.marquee__part {
+  flex-shrink: 0;
+  padding: 0 4px;
+  font-smooth: always;
+  display: flex;
+  align-items: center;
+  gap:20px;
+}
+
+._mark{
+  -webkit-text-stroke: 1px white;
+  background: transparent;
+    color: transparent;
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+
+
+}
+
+
+.marquee {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 72px;
+  padding: 32px 0;
+  position: relative;
+  overflow: hidden;
+margin-top:450px;}
+
+.marquee__inner {
+  -webkit-font-smoothing: antialiased;
+    width: fit-content;
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    background-color:black;
+place-items: center;}
+
+.spacer {
+  height: 50px;
+}
+
+@media (max-width: 650px) {
+  .marquee {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 42px;
+  padding: 32px 0;
+  position: relative;
+  overflow: hidden;
+margin-top:150px;}
+}
+
+</style>
